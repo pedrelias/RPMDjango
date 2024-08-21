@@ -54,7 +54,7 @@ class Corrida(models.Model):
     circuito = models.ForeignKey(Circuito, on_delete=models.CASCADE)
     numero_voltas = models.IntegerField()
     categoria = models.ForeignKey(CategoriaAutomobilismo, on_delete=models.CASCADE)
-    vencedor = models.CharField(max_length=100)
+    vencedor = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Corrida'
@@ -80,8 +80,8 @@ class Equipe(models.Model):
 class Piloto(models.Model):
     nome = models.CharField(max_length=100)
     data_nascimento = models.DateField()
-    pais = models.CharField(max_length=100)
-    equipe = models.CharField(max_length=100)
+    pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+    equipe = models.ForeignKey(Equipe, on_delete=models.CASCADE)
     podios = models.IntegerField()
     pole_positions = models.IntegerField()
     vitorias = models.IntegerField()
@@ -91,7 +91,7 @@ class Piloto(models.Model):
         verbose_name_plural = 'Pilotos'
 
     def __str__(self):
-        return f'{self.nome} - {self.equipe} - {self.pais} - {self.carro} - {self.podios} - {self.pole_positions} - {self.vitorias}'
+        return f'{self.nome} - {self.equipe} - {self.pais} - {self.podios} - {self.pole_positions} - {self.vitorias}'
     
 
 class Montadora(models.Model):
@@ -129,14 +129,12 @@ class Calendario(models.Model):
     corrida = models.ForeignKey(Corrida, on_delete=models.CASCADE)
     data = models.DateField()
     hora = models.TimeField()
-    circuito = models.ForeignKey(Circuito, on_delete=models.CASCADE)
-    categoria = models.CharField(max_length=100)
 
     class Meta:
         verbose_name = 'Calendario'
 
     def __str__(self):
-        return f'{self.corrida} - {self.data} - {self.hora} - {self.circuito} - {self.categoria}'
+        return f'{self.corrida} - {self.data} - {self.hora}'
 
 class Pontuacao(models.Model):
     piloto = models.ForeignKey(Piloto, on_delete=models.CASCADE)

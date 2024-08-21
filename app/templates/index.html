@@ -4,14 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>RPM++</title>
 </head>
 <body>
-    <h1>Imagens da NASCAR, F1 e Indy</h1>
+    <h1>Escolha a Categoria Desejada</h1>
     <div>
-        <img src="{% static 'img/f1.png' %}" alt="F1">
-        <img src="{% static 'img/nascar.png' %}" alt="Nascar">
-        <img src="{% static 'img/indy.png' %}" alt="Indy">
+        <div>
+            <a href="{% url 'f1' %}">
+                <img src="{% static 'img/f1.png' %}" alt="F1">
+            </a>
+            <br>
+            <a href="{% url 'nascar' %}">
+                <img src="{% static 'img/nascar.png' %}" alt="Nascar">
+            </a>
+            <br>
+            <a href="{% url 'indy' %}">
+                <img src="{% static 'img/indy.png' %}" alt="Indy">
+            </a>
+        </div>
+        </a>
     </div>
 </body>
 </html>

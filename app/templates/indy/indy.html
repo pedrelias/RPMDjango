@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndyCar</title>
+</head>
+<body>
+    <h1>Calendário</h1>
+<ul>
+{% for evento in calendario %}
+    <li>{{ evento.corrida }}: {{ evento.data }} - {{ evento.hora }}</li>
+{% endfor %}
+</ul>
+
+<h1>Equipes</h1>
+<ul>
+{% for equipe in equipes %}
+    <li>{{ equipe.nome }}: {{ equipe.pais }} - {{ equipe.fundacao }} - {{ equipe.site_oficial }}</li>
+{% endfor %}
+</ul>
+
+<h1>Pilotos</h1>
+<ul>
+{% for piloto in pilotos %}
+    <li>{{ piloto.nome }}: {{ piloto.equipe }} - {{ piloto.pais }} - {{ piloto.podios }} - {{ piloto.pole_positions }} - {{ piloto.vitorias }}</li>
+{% endfor %}
+</ul>
+    <a href="{% url 'index' %}">Voltar ao Index</a>
+</body>
+</html>

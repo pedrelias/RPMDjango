@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórmula 1</title>
+</head>
+<body>
+    <h1>Calendário de Fórmula 1</h1>
+    <ul>
+    {% for evento in calendario %}
+        <li>{{ evento.corrida.nome }}: {{ evento.data }} - {{ evento.hora }}</li>
+    {% endfor %}
+    </ul>
+
+    <h1>Equipes de Fórmula 1</h1>
+    <ul>
+    {% for equipe in equipes %}
+        <li>{{ equipe.nome }}: {{ equipe.pais.nome }} - Fundação: {{ equipe.fundacao }} - <a href="{{ equipe.site_oficial }}" target="_blank">Site Oficial</a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Pilotos de Fórmula 1</h1>
+    <ul>
+    {% for piloto in pilotos %}
+        <li>{{ piloto.nome }}: Equipe: {{ piloto.equipe.nome }} - País: {{ piloto.pais.nome }} - Pódios: {{ piloto.podios }} - Pole Positions: {{ piloto.pole_positions }} - Vitórias: {{ piloto.vitorias }}</li>
+    {% endfor %}
+    </ul>
+    
+    <a href="{% url 'index' %}">Voltar ao Index</a>
+</body>
+</html>
