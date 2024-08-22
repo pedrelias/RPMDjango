@@ -6,26 +6,26 @@
     <title>Fórmula 1</title>
 </head>
 <body>
-    <h1>Calendário de Fórmula 1</h1>
-    <ul>
-    {% for evento in calendario %}
-        <li>{{ evento.corrida.nome }}: {{ evento.data }} - {{ evento.hora }}</li>
-    {% endfor %}
-    </ul>
+    <h1>Calendário</h1>
+<ul>
+{% for evento in calendario %}
+    <li>{{ evento.corrida }}: {{ evento.data }} - {{ evento.hora }}</li>
+{% endfor %}
+</ul>
 
-    <h1>Equipes de Fórmula 1</h1>
-    <ul>
+    <h1>Equipes</h1>
+<ul>
     {% for equipe in equipes %}
-        <li>{{ equipe.nome }}: {{ equipe.pais.nome }} - Fundação: {{ equipe.fundacao }} - <a href="{{ equipe.site_oficial }}" target="_blank">Site Oficial</a></li>
+        <li>{{ equipe.nome }}: {{ equipe.pais }} - {{ equipe.fundacao }} - {{ equipe.site_oficial }}</li>
     {% endfor %}
-    </ul>
+</ul>
 
-    <h1>Pilotos de Fórmula 1</h1>
-    <ul>
+    <h1>Pilotos</h1>
+<ul>
     {% for piloto in pilotos %}
-        <li>{{ piloto.nome }}: Equipe: {{ piloto.equipe.nome }} - País: {{ piloto.pais.nome }} - Pódios: {{ piloto.podios }} - Pole Positions: {{ piloto.pole_positions }} - Vitórias: {{ piloto.vitorias }}</li>
+        <li>{{ piloto.nome }}: {{ piloto.equipe }} - {{ piloto.pais }} - {{ piloto.podios }} - {{ piloto.pole_positions }} - {{ piloto.vitorias }}</li>
     {% endfor %}
-    </ul>
+</ul>
     
     <a href="{% url 'index' %}">Voltar ao Index</a>
 </body>

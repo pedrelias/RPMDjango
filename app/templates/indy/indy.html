@@ -13,19 +13,20 @@
 {% endfor %}
 </ul>
 
-<h1>Equipes</h1>
+    <h1>Equipes</h1>
 <ul>
-{% for equipe in equipes %}
-    <li>{{ equipe.nome }}: {{ equipe.pais }} - {{ equipe.fundacao }} - {{ equipe.site_oficial }}</li>
-{% endfor %}
+    {% for equipe in equipes %}
+        <li>{{ equipe.nome }}: {{ equipe.pais }} - {{ equipe.fundacao }} - {{ equipe.site_oficial }}</li>
+    {% endfor %}
 </ul>
 
-<h1>Pilotos</h1>
+    <h1>Pilotos</h1>
 <ul>
-{% for piloto in pilotos %}
-    <li>{{ piloto.nome }}: {{ piloto.equipe }} - {{ piloto.pais }} - {{ piloto.podios }} - {{ piloto.pole_positions }} - {{ piloto.vitorias }}</li>
-{% endfor %}
+    {% for piloto in pilotos %}
+        <li>{{ piloto.nome }}: {{ piloto.equipe }} - {{ piloto.pais }} - {{ piloto.podios }} - {{ piloto.pole_positions }} - {{ piloto.vitorias }}</li>
+    {% endfor %}
 </ul>
+    
     <a href="{% url 'index' %}">Voltar ao Index</a>
 </body>
 </html>
