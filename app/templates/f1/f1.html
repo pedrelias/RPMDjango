@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fórmula 1</title>
+    <title>RPM++</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h1>Calendário</h1>
+    <h1>Fórmula 1</h1>
+    <h2>Calendário</h2>
 <ul>
 {% for evento in calendario %}
     <li>{{ evento.corrida.nome }} - {{ evento.corrida.circuito.nome }}: {{ evento.data }} - {{ evento.hora }}</li>
 {% endfor %}
 </ul>
 
-    <h1>Equipes</h1>
+    <h2>Equipes</h2>
 <ul>
     {% for equipe in equipes %}
         <li>Nome: {{ equipe.nome }} <br>
@@ -26,7 +27,7 @@
     {% endfor %}
 </ul>
 
-    <h1>Pilotos</h1>
+    <h2>Pilotos</h2>
 <ul>
     {% for piloto in pilotos %}
         <li>Nome: {{ piloto.nome }} <br>
