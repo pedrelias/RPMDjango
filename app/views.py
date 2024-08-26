@@ -26,8 +26,8 @@ def f1_view(request):
     f1_categoria = CategoriaAutomobilismo.objects.get(nome='Formula 1')
     corridas_f1 = Corrida.objects.filter(categoria=f1_categoria)
     calendario_f1 = Calendario.objects.filter(corrida__in=corridas_f1)
-    equipes = Equipe.objects.all()
-    pilotos = Piloto.objects.all()
+    equipes = Equipe.objects.filter(categoria_automobilismo=f1_categoria)
+    pilotos = Piloto.objects.filter(equipe__in=equipes)
 
     context = {
         'calendario': calendario_f1,
@@ -41,8 +41,8 @@ def nascar_view(request):
     nascar_categoria = CategoriaAutomobilismo.objects.get(nome='NASCAR')
     corridas_nascar = Corrida.objects.filter(categoria=nascar_categoria)
     calendario_nascar = Calendario.objects.filter(corrida__in=corridas_nascar)
-    equipes = Equipe.objects.all()
-    pilotos = Piloto.objects.all()
+    equipes = Equipe.objects.filter(categoria_automobilismo=nascar_categoria)
+    pilotos = Piloto.objects.filter(equipe__in=equipes)
 
     context = {
         'calendario': calendario_nascar,
@@ -56,8 +56,8 @@ def indy_view(request):
     indy_categoria = CategoriaAutomobilismo.objects.get(nome='IndyCar')
     corridas_indy = Corrida.objects.filter(categoria=indy_categoria)
     calendario_indy = Calendario.objects.filter(corrida__in=corridas_indy)
-    equipes = Equipe.objects.all()
-    pilotos = Piloto.objects.all()
+    equipes = Equipe.objects.filter(categoria_automobilismo=indy_categoria)
+    pilotos = Piloto.objects.filter(equipe__in=equipes)
 
     context = {
         'calendario': calendario_indy,

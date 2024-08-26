@@ -1,29 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IndyCar</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
     <h1>Calendário</h1>
 <ul>
 {% for evento in calendario %}
-    <li>{{ evento.corrida }}: {{ evento.data }} - {{ evento.hora }}</li>
+    <li>{{ evento.corrida.nome }} - {{ evento.corrida.circuito.nome }}: {{ evento.data }} - {{ evento.hora }}</li>
 {% endfor %}
 </ul>
 
     <h1>Equipes</h1>
 <ul>
     {% for equipe in equipes %}
-        <li>{{ equipe.nome }}: {{ equipe.pais }} - {{ equipe.fundacao }} - {{ equipe.site_oficial }}</li>
+        <li>Nome: {{ equipe.nome }} <br>
+            País: {{ equipe.pais.nome }} <br>
+            Fundação: {{ equipe.fundacao }} <br>
+            Montadora: {{ equipe.montadora.nome }}<br>
+            Site Oficial: {{ equipe.site_oficial }}<br></li>
     {% endfor %}
 </ul>
 
     <h1>Pilotos</h1>
 <ul>
     {% for piloto in pilotos %}
-        <li>{{ piloto.nome }}: {{ piloto.equipe }} - {{ piloto.pais }} - {{ piloto.podios }} - {{ piloto.pole_positions }} - {{ piloto.vitorias }}</li>
+        <li>Nome: {{ piloto.nome }} <br>
+            Equipe: {{ piloto.equipe.nome }} <br>
+            Pais: {{ piloto.pais }} <br>
+            Pódios: {{ piloto.podios }} <br>
+            Pole Positions: {{ piloto.pole_positions }} <br>
+            Vitórias: {{ piloto.vitorias }}<br></li>
     {% endfor %}
 </ul>
     

@@ -1,3 +1,4 @@
+from email.policy import default
 from pyexpat import model
 import site
 from django.db import models
@@ -63,11 +64,26 @@ class Corrida(models.Model):
     def __str__(self):
         return f'{self.nome} - {self.circuito} - {self.numero_voltas} - {self.categoria} - {self.vencedor}'
     
+class Montadora(models.Model):
+    nome = models.CharField(max_length=100)
+    cidade = models.ForeignKey(Cidades, on_delete=models.CASCADE)
+    pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+    fundacao = models.IntegerField()
+    site_oficial = models.URLField()
+
+    class Meta:
+        verbose_name = 'Montadora'
+        verbose_name_plural = 'Montadoras'
+
+    def __str__(self):
+        return f'{self.nome} - {self.cidade} - {self.pais} - {self.fundacao} - {self.site_oficial}'
 
 class Equipe(models.Model):
     nome = models.CharField(max_length=100)
     pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
     fundacao = models.IntegerField()
+    categoria_automobilismo = models.ForeignKey(CategoriaAutomobilismo, on_delete=models.CASCADE, default=1)
+    montadora = models.ForeignKey(Montadora, on_delete=models.CASCADE)
     site_oficial = models.URLField()
 
     class Meta:
@@ -75,7 +91,7 @@ class Equipe(models.Model):
         verbose_name_plural = 'Equipes'
 
     def __str__(self):
-        return f'{self.nome} - {self.pais} - {self.fundacao} - {self.site_oficial}'
+        return f'{self.nome} - {self.pais} - {self.fundacao} - {self.categoria_automobilismo} - {self.site_oficial}'
 
 class Piloto(models.Model):
     nome = models.CharField(max_length=100)
@@ -94,19 +110,6 @@ class Piloto(models.Model):
         return f'{self.nome} - {self.equipe} - {self.pais} - {self.podios} - {self.pole_positions} - {self.vitorias}'
     
 
-class Montadora(models.Model):
-    nome = models.CharField(max_length=100)
-    cidade = models.ForeignKey(Cidades, on_delete=models.CASCADE)
-    pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
-    fundacao = models.IntegerField()
-    site_oficial = models.URLField()
-
-    class Meta:
-        verbose_name = 'Montadora'
-        verbose_name_plural = 'Montadoras'
-
-    def __str__(self):
-        return f'{self.nome} - {self.cidade} - {self.pais} - {self.fundacao} - {self.site_oficial}'
 
 class Carro(models.Model):
     modelo = models.CharField(max_length=100)
