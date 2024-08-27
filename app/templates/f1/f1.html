@@ -15,6 +15,16 @@
     <li>{{ evento.corrida.nome }} - {{ evento.corrida.circuito.nome }}: {{ evento.data }} - {{ evento.hora }}</li>
 {% endfor %}
 </ul>
+<ul>
+
+    <h2>Transmissão</h2>
+<ul>
+    {% for transmissao in transmissoes %}
+    <li>
+        {{ transmissao.canal.nome }} - {{ transmissao.horario_inicio }}
+    </li>
+    {% endfor %}
+</ul>
 
     <h2>Equipes</h2>
 <ul>

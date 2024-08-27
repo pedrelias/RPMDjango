@@ -151,8 +151,6 @@ class Pontuacao(models.Model):
     def __str__(self):
         return f'{self.piloto} - {self.corrida} - {self.posicao} - {self.pontos}'
 
-
-
 class CanalTransmissao(models.Model):
     nome = models.CharField(max_length=100)
     pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
@@ -164,6 +162,7 @@ class CanalTransmissao(models.Model):
 
     def __str__(self):
         return f'{self.nome} - {self.pais} - {self.site_oficial}'
+
 
 class Transmissao(models.Model):
     corrida = models.ForeignKey(Corrida, on_delete=models.CASCADE)

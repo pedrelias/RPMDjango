@@ -28,11 +28,13 @@ def f1_view(request):
     calendario_f1 = Calendario.objects.filter(corrida__in=corridas_f1)
     equipes = Equipe.objects.filter(categoria_automobilismo=f1_categoria)
     pilotos = Piloto.objects.filter(equipe__in=equipes)
+    transmissoes_f1 = Transmissao.objects.filter(corrida__in=corridas_f1).select_related('canal')
 
     context = {
         'calendario': calendario_f1,
         'equipes': equipes,
         'pilotos': pilotos,
+        'transmissoes': transmissoes_f1,
     }
 
     return render(request, 'f1/f1.html', context)
@@ -43,11 +45,13 @@ def nascar_view(request):
     calendario_nascar = Calendario.objects.filter(corrida__in=corridas_nascar)
     equipes = Equipe.objects.filter(categoria_automobilismo=nascar_categoria)
     pilotos = Piloto.objects.filter(equipe__in=equipes)
+    transmissoes_nascar = Transmissao.objects.filter(corrida__in=corridas_nascar).select_related('canal')
 
     context = {
         'calendario': calendario_nascar,
         'equipes': equipes,
         'pilotos': pilotos,
+        'transmissoes': transmissoes_nascar,
     }
 
     return render(request, 'nascar/nascar.html', context)
@@ -58,11 +62,13 @@ def indy_view(request):
     calendario_indy = Calendario.objects.filter(corrida__in=corridas_indy)
     equipes = Equipe.objects.filter(categoria_automobilismo=indy_categoria)
     pilotos = Piloto.objects.filter(equipe__in=equipes)
+    transmissoes_indy = Transmissao.objects.filter(corrida__in=corridas_indy).select_related('canal')
 
     context = {
         'calendario': calendario_indy,
         'equipes': equipes,
         'pilotos': pilotos,
+        'transmissoes': transmissoes_indy,
     }
 
     return render(request, 'indy/indy.html', context)
