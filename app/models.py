@@ -111,23 +111,6 @@ class Piloto(models.Model):
     
 
 
-class Carro(models.Model):
-    modelo = models.CharField(max_length=100)
-    ano = models.IntegerField()
-    equipe = models.ForeignKey(Equipe, on_delete=models.CASCADE)
-    piloto = models.ForeignKey(Piloto, on_delete=models.CASCADE, related_name='carros')
-    motor = models.CharField(max_length=100)
-    peso = models.IntegerField()
-    potencia = models.IntegerField()
-    montadora = models.ForeignKey(Montadora, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Carro'
-        verbose_name_plural = 'Carros'
-
-    def __str__(self):
-        return f'{self.modelo} - {self.ano} - {self.equipe} - {self.piloto} - {self.motor} - {self.peso} - {self.potencia} - {self.montadora}'
-
 class Calendario(models.Model):
     corrida = models.ForeignKey(Corrida, on_delete=models.CASCADE)
     data = models.DateField()
@@ -139,17 +122,6 @@ class Calendario(models.Model):
     def __str__(self):
         return f'{self.corrida} - {self.data} - {self.hora}'
 
-class Pontuacao(models.Model):
-    piloto = models.ForeignKey(Piloto, on_delete=models.CASCADE)
-    corrida = models.ForeignKey(Corrida, on_delete=models.CASCADE)
-    posicao = models.IntegerField()
-    pontos = models.IntegerField()
-
-    class Meta:
-        verbose_name = 'Pontuacao'
-
-    def __str__(self):
-        return f'{self.piloto} - {self.corrida} - {self.posicao} - {self.pontos}'
 
 class CanalTransmissao(models.Model):
     nome = models.CharField(max_length=100)
