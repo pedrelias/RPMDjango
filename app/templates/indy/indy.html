@@ -13,7 +13,7 @@
 <ul>
 {% for evento in calendario %}
     <li>{{ evento.corrida.nome }} - {{ evento.corrida.circuito.nome }} ({{ evento.corrida.numero_voltas }} voltas): {{ evento.data }} - {{ evento.hora }} - Vencedor: {{ evento.corrida.vencedor }}</li>
-    {% endfor %}}</li>
+    </li>
 {% endfor %}
 </ul>
 
