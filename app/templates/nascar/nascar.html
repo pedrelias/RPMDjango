@@ -21,7 +21,7 @@
 <ul>
     {% for transmissao in transmissoes %}
     <li>
-        {{ transmissao.canal.nome }} - {{ transmissao.horario_inicio }}
+        {{ transmissao.canal.nome }} - {{ transmissao.horario_inicio }} -  {{ transmissao.canal.site_oficial }}
     </li>
     {% endfor %}
 </ul>
